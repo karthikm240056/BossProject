@@ -1,0 +1,103 @@
+package restaurant.scheduler;
+
+	import java.util.ArrayList;
+	import java.util.Scanner;
+
+	@SuppressWarnings("unused")
+	class Staff {
+	    String name;
+	    String role;
+	    String shiftTime;
+
+	    Staff(String name, String role, String shiftTime) {
+	        this.name = name;
+	        this.role = role;
+	        this.shiftTime = shiftTime;
+	    }
+
+	    void display() {
+	        System.out.printf("%-15s %-15s %-15s\n", name, role, shiftTime);
+	    }
+	}
+package restaurant.scheduler;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ShiftScheduler {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Staff> staffList = new ArrayList<>();
+
+        System.out.println("=== Restaurant Staff Shift Scheduler ===");
+        while (true) {
+            System.out.println("\n1. Add Staff Shift");
+            System.out.println("2. View Schedule");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine(); // consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Staff Name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter Role (e.g., Chef, Waiter, Manager): ");
+                    String role = sc.nextLine();
+
+                    System.out.print("Enter Shift Time (e.g., 9AM-1PM, 1PM-5PM, 5PM-10PM): ");
+                    String shiftTime = sc.nextLine();
+
+                    staffList.add(new Staff(name, role, shiftTime));
+                    System.out.println(" Shift added successfully!");
+                    break;
+
+                case 2:
+                    if (staffList.isEmpty()) {
+                        System.out.println(" No shifts assigned yet!");
+                    } else {
+                        System.out.println("\n--- Staff Shift Schedule ---");
+                        System.out.printf("%-15s %-15s %-15s\n", "Name", "Role", "Shift Time");
+                        System.out.println("---------------------------------------------");
+                        for (Staff s : staffList) {
+                            s.display();
+                        }
+                    }
+                    break;
+
+                case 3:
+                    System.out.println(" Exiting Shift Scheduler. Have a nice day!");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println(" Invalid choice! Please try again.");
+            }
+        }
+    }
+}
+
+	
+	
+	
+
+
+
+	
+	
+	
+
+
+	
+	
+	
+	
+
+
+		
+	
+	
+	
+
+
